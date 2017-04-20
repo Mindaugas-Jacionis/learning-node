@@ -19,10 +19,13 @@
 //   console.log('Server running @ http://127.0.0.1:3000/');
 // });
 
-// express lesson 2 | endpoints
+// express lesson 2 | CRUD endpoints | mongoose
 import express from 'express';
 import bodyParser from 'body-parser';
-import cats from './cats.js';
+import catRoutes from './catRoutes.js';
+import mongoose from 'mongoose';
+
+mongoose.connect('mongodb://localhost/cats');
 
 const app = express();
 app.use(bodyParser.json());
@@ -30,7 +33,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-cats(app);
+catRoutes(app);
 
 const server = app.listen(3000, () => {
   console.log('Server running @ http://127.0.0.1:3000/');
